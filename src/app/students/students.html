@@ -1,0 +1,35 @@
+<h2>Student CRUD App</h2>
+
+<form (ngSubmit)="addStudent()">
+  <input type="text" [(ngModel)]="student.name" name="name" placeholder="Name" required>
+  <input type="email" [(ngModel)]="student.email" name="email" placeholder="Email" required>
+  <input type="text" [(ngModel)]="student.course" name="course" placeholder="Course" required>
+
+  <button type="submit">
+    {{ isEdit ? 'Update' : 'Add' }}
+  </button>
+  <button type="button" (click)="clearForm()">Clear</button>
+</form>
+
+<hr>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Course</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let stu of students">
+    <td>{{stu.id}}</td>
+    <td>{{ stu.name }}</td>
+    <td>{{ stu.email }}</td>
+    <td>{{ stu.course }}</td>
+    <td>
+      <button (click)="editStudent(stu)">Edit</button>
+      <button (click)="deleteStudent(stu.id)">Delete</button>
+    </td>
+  </tr>
+</table>
